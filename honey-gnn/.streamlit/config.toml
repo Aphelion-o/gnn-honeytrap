@@ -1,0 +1,6 @@
+# .streamlit/config.toml
+[browser]
+showErrorDetails = false
+
+[global]
+showWarningOnDirectExecution = false

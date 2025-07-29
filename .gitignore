@@ -1,0 +1,12 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Archived demo iterations kept locally for reference
+honey-gnn/archive/
+
+# Large / regenerable data artifacts
+honey-gnn/messages.json
+honey-gnn/processed/
+*.log
