@@ -40,6 +40,3 @@ The final model (`honeytrap_model.pth`) was trained by `honey-gnn/model.py` on:
   per-message MobileBERT embeddings). This is what `model.py` loads for training.
 
 To retrain: `uv run python model.py` (or re-run `uv run python preprocessing.py` first to rebuild `processed/`).
-
-`honey-gnn/user_features.json`, `honeytrap_labels.json` and `honeytrap_users.json` come from the
-`data.py` prototype's random generator; its ~124 MB `messages.json` is gitignored.
