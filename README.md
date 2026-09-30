@@ -10,7 +10,7 @@ with a Streamlit demo app.
   - `app.py` — Streamlit demo (GNN predictions combined with rule-based risk scoring, network visualization).
   - `model.py` — heterogeneous GNN model (`HoneytrapGNN`) and graph construction, training, saves `honeytrap_model.pth`.
   - `preprocessing.py` — conversation parsing and text embedding.
-  - `data.py` — dataset preparation (`messages.json`, `user_features.json`, `honeytrap_labels.json`).
+  - `data.py` — early prototype: random synthetic data generator + simple GNN (not used for the final model).
   - `archive/` (gitignored) — earlier demo iterations and scratch files kept for reference.
 - **`data-synthesis/`** — synthetic dataset generation.
   - `persona_synth.py` / `data_synth.py` — Faker-based persona and interaction generation (`personas.csv`, `infrastructure.csv`, `interactions.csv`).
@@ -26,5 +26,15 @@ uv sync
 uv run streamlit run app.py
 ```
 
-Note: `honey-gnn/messages.json` (~124 MB raw message data) and `honey-gnn/processed/`
-are gitignored; the demo's trained model checkpoint `honeytrap_model.pth` is committed.
+## Data
+
+The final model (`honeytrap_model.pth`) was trained by `honey-gnn/model.py` on:
+
+- `honey-gnn/data.json` — 789 synthetic chat messages between 58 users, generated with Gemini.
+- `honey-gnn/processed/` — `data.json` after `preprocessing.py` (per-user features and
+  per-message MobileBERT embeddings). This is what `model.py` loads for training.
+
+To retrain: `uv run python model.py` (or re-run `uv run python preprocessing.py` first to rebuild `processed/`).
+
+`honey-gnn/user_features.json`, `honeytrap_labels.json` and `honeytrap_users.json` come from the
+`data.py` prototype's random generator; its ~124 MB `messages.json` is gitignored.

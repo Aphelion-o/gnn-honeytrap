@@ -8,5 +8,4 @@ honey-gnn/archive/
 
 # Large / regenerable data artifacts
 honey-gnn/messages.json
-honey-gnn/processed/
 *.log
