@@ -15,6 +15,7 @@ with a Streamlit demo app.
 - **`data-synthesis/`** — synthetic dataset generation.
   - `persona_synth.py` / `data_synth.py` — Faker-based persona and interaction generation (`personas.csv`, `infrastructure.csv`, `interactions.csv`).
   - Final message-level conversation data was generated with Gemini (web) rather than these scripts.
+  - `gemini_prompt_draft.md` — draft of the Gemini prompt (the final prompt was not preserved).
 
 ## Running the demo
 
@@ -25,6 +26,10 @@ cd honey-gnn
 uv sync
 uv run streamlit run app.py
 ```
+
+Requires Python 3.13. `torch` is installed from PyPI: on Windows/macOS that's the CPU build, on Linux
+it includes CUDA. The model is small, so CPU is fine. The first run downloads the MobileBERT model
+(`google/mobilebert-uncased`) from Hugging Face, so it needs internet access.
 
 ## Data
 
